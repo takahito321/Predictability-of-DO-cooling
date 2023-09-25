@@ -1,0 +1,30 @@
+set ticslevel 0
+#set view 109, 103
+set view 77, 52
+set tics font ", 19"
+set xlabel "z" font ",21" offset 0,0,0
+set ylabel "y" font ",21" offset 0,-0.9,0
+set zlabel "x" font ",21" offset 0,0,0 
+set xrange [(-0.25):(-0.5)]
+set yrange [(-0.49):(-0.2)]
+set zrange [(-0.25):1]
+set xtics 0.1
+set xtics offset  -0.3,-0.3,-0
+set ytics offset -0,-0.5,-0
+set ztics offset -0,-0,-0
+#set label "(g)" at -0.27,-0.49,1.35 font 'Arial-Bold,25'
+
+#set arrow from 1-0.4743416, -0.4743416, 0.4743416 to -0.4743416, -0.4743416, 0.4743416
+
+splot "b.dat" u 3:2:1 w d ps 0.1 lc rgb "green" notitle,\
+"c.dat" u 3:2:1 w l lc rgb "black" lw 3 notitle,\
+"a.dat" u 3:2:1 w l lc rgb "blue" lw 2 notitle,\
+"-" w p lc rgb 'magenta' pt 7 ps 2 notitle
+-0.4743416 -0.4743416 0.4743416
+e
+
+set arrow 1 from -0.4,-0.38,1.1 to -0.42,-0.42,1.06 lw 2 head size 4
+set term postscript enhanced color
+set output "mmo_3d.eps"
+replot
+
