@@ -7,7 +7,7 @@ The codes are written by Takahito Mitsui. Some parts are written following early
 1. This code uses Rasmussen_et_al_2014_QSR_Table_2.xlsx and seierstad.xlsx for input data
 2. make a directry/folder named 'ews_data' at the same directry level of ews_data.R
 3. install R-libraries listed in the top of the R-script if needed   
-4. change the number 'k' (k=1, 2, ..., 12) to specify which proxy and interstedials are analyzed. For example, k=1 corresponds to d18O from GI-25 to GI-20 (Fig. 2), and k=2 corresponds to d18O from GI-19.2 to GI-1
+4. change the number 'k' (k=1, 2, ..., 12) to specify which proxy and interstedials are analyzed. For example, k=1 corresponds to d18O data from GI-25 to GI-20 (Fig. 2), and k=2 corresponds to d18O data from GI-19.2 to GI-1
 5. choose parameters for calculating CSD indicators (variance, lag.1 autocorrelation, lambda, etc): ns (the number of surrogate data), smoothing (gaussian or loess), bandwidth (0-100%), winsize (0-100%)     
 6. run ews_data.R. Output Figures are created in 'ews_data'
 
