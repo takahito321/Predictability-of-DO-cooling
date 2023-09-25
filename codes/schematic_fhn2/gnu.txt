@@ -1,0 +1,23 @@
+set xrange [(-0.65):(-0.25)]
+set yrange [(-0.5):(1.2)]
+set xlabel "y"
+set ylabel "x"
+plot "b.dat" u 2:1 w l lt 1 lc rgb "green" lw 2 notitle,\
+"b.dat" u 3:1 w l lt 0 lc rgb "magenta" lw 2 notitle,\
+"a.dat" u 2:1 w l lt 1 lc rgb "blue" lw 1 notitle
+
+set term postscript enhanced color
+set output "fhn_2d.eps"
+replot
+
+
+write.table(dat, file = "b.dat", col.names=F, row.names=F) # -50 used
+
+
+postscript(file="schematic_fhn.eps", horizontal=TRUE, encoding="WinAnsi.enc")
+par(mar=c(0,0,0,0))
+par(oma=c(0,0,0,0))
+par(mai = c(0.9, 0.9, 0.2, 0.1))
+plot(t,x,xlim=c(0,3),type="l",xlab="t",ylab="x",cex.lab=1.5,cex.axis=1.5,lwd=0.5, col=4)
+#mtext("(b)",side=3,adj=0,cex=1.6,line=0.2)
+dev.off()
