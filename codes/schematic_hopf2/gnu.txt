@@ -1,0 +1,25 @@
+set ticslevel 0
+set view 109, 113
+#set view 60, 300
+set tics font ", 19"
+set xlabel "p" font ",21" offset 0,0,0
+set ylabel "y" font ",21" offset 0,-0.8,0
+set zlabel "x" font ",21" offset 0,0,0 
+set xrange [0.2:0.3]
+set yrange [(-0.59):0]
+set zrange [(-0.35):1.25]
+set xtics 0.02
+set xtics offset 0,-0.3,0
+set ytics offset 0,-0.6,0
+set ztics offset 0,0,0
+splot "d.dat" u 4:2:1 w d ps 0.1 lc rgb "green" notitle,\
+"b.dat" u 1:3:2 w l lt 1 lc rgb "black" lw 4 notitle,\
+"c.dat" u 1:3:2 w l lt 0 lc rgb "magenta" lw 4 notitle,\
+"a.dat" u 1:3:2 w l lt 1 lc rgb "blue" lw 2 notitle
+#set label "(e)" at 0.3,-0.55,1.6 font 'Arial-Bold,25'
+set arrow 1 from 0.3,-0.3,1.11 to 0.298,-0.37,1.05
+
+set term postscript enhanced color
+set output "hopf_3d.eps"
+replot
+
