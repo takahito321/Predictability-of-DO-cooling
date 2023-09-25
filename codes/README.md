@@ -18,7 +18,7 @@ The codes are written by Takahito Mitsui. Some parts are written following early
 - run ews_data_summary.R. Output Figures are created in 'ews_data_summary'
   
 ### R-Codes  for Fig. 5 
-are included in the following folders
+are included in several folders:
 - schematic_stommel2 (Stommel model Fig. 5a)
 - schematic_fhn2  (Stochastic slow-fast oscillations in Figs 5b & 5b)
 - schematic_hopf2 (Hopf bifurcation mechanism in Figs 5d & 5e)
