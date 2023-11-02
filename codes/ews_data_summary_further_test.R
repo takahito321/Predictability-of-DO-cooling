@@ -5,8 +5,8 @@
 # 
 # 0. The outputs of this R-code (like proxy1_DO**_case*.dat) are generated in the directry ews_data_summary_further_test 
 # 1. Set index 'i' below to specify which DO is examined: i=2 for DO-25 or i=20 for DO-12. Those two are considered in the paper.  
-# 2. Set index 'case' below from 1 to 10. Then run this R-code for each case.
-# Finally go to directry ews_data_summary_further_test. Then run result.R to obtain the probability of observing robust precursor signals for variance (>=15 times over 30 parameter sets), lag-1AC (>=15), variance (>15), and lag-1 AC (>15)
+# 2. Set index 'case' below from 1 to 10 (this just splits 5000 experiments into ten 500 experiments allowing 'parallel' computations). Then run this R-code for each case.
+# 3. Finally go to directry ews_data_summary_further_test. Then run result.R to obtain the probability of observing robust precursor signals for variance: the shown numbers are probabilites of getting robust SPS for the variance (>=15 times over 30 parameter sets), lag-1AC (>=15), variance (>15) and lag-1 AC (>15), respectively.
 case<-1
 
 library(misty)
