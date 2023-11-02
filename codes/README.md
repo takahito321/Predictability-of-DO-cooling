@@ -17,9 +17,16 @@ The codes are written by Takahito Mitsui. Some parts are written following early
 - change the number 'k' (k=1, 2, ..., 6) to specify which proxy is analyzed.
 - run ews_data_summary.R. Output Figures are created in 'ews_data_summary'
   
-### R-Codes  for Fig. 5 
+### R-Codes for Fig. 5 
 are included in several folders:
 - schematic_stommel2 (Stommel model Fig. 5a)
 - schematic_fhn2  (Stochastic slow-fast oscillations in Figs 5b & 5b)
 - schematic_hopf2 (Hopf bifurcation mechanism in Figs 5d & 5e)
 - schematic_mmo2  (Mixed-mode oscillation mechanism in Figs 5f & 5g)
+
+### ews_data_summary_further_test.R for Appendix A 
+- Program to calculate the probability of observing robust precursor signals for 5000 phase-randomized surrogtes in Appendix A
+- The outputs of this R-code (like proxy1_DO**_case*.dat) are generated in the directry ews_data_summary_further_test 
+- Step 1. In the code, set index 'i' to specify which DO is examined: i=2 for DO-25 or i=20 for DO-12 (those two are considered in the paper)  
+- Step 2. In the code, set index 'case' from 1 to 10 (this just splits 5000 experiments into ten 500 experiments allowing 'parallel' computations). Then run this R-code for each case.
+- Step 3. Finally go to directry ews_data_summary_further_test. Then run result.R to obtain the probability of observing robust precursor signals for variance: the shown numbers are probabilites of getting robust SPS for the variance (>=15 times over 30 parameter sets), lag-1AC (>=15), variance (>15) and lag-1 AC (>15), respectively.
