@@ -1,0 +1,17 @@
+result<-numeric(0)
+for(case in 1:10){
+    filename<-paste("proxy1_DO2_case",case,".dat",sep="")
+    tab<-read.table(filename)[,1]
+    result<-rbind(result,tab)
+}
+
+colMeans(result)/500
+
+result<-numeric(0)
+for(case in 1:10){
+    filename<-paste("proxy1_DO20_case",case,".dat",sep="")
+    tab<-read.table(filename)[,1]
+    result<-rbind(result,tab)
+}
+
+colMeans(result)/500
