@@ -24,6 +24,9 @@ are included in several folders:
 - schematic_hopf2 (Hopf bifurcation mechanism in Figs 5d & 5e)
 - schematic_mmo2  (Mixed-mode oscillation mechanism in Figs 5f & 5g)
 
+### R-Code for Fig. 6 
+- ews_stommel_rate.R in folder schematic_stommel2 
+
 ### ews_data_summary_further_test.R for Appendix A 
 - Program to calculate the probability of observing robust precursor signals for 5000 phase-randomized surrogtes in Appendix A
 - The outputs of this R-code (like proxy1_DO**_case*.dat) are generated in the directry ews_data_summary_further_test 
