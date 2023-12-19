@@ -1,5 +1,5 @@
 dt<-0.001
-T<-10
+T<-5
 q<-100
 th<-0.2
 n<-T/dt
@@ -7,7 +7,7 @@ t<-(1:n)*dt
 a<-seq(0.3,0.2,length=n)
 ah<-((1-1/q)/2)^2
 
-set.seed(2) # 2 13
+set.seed(30) # 5 13 14 17 _29_ 
 x<-rep(0,n) # -0.3
 y<-rep(0,n) # -0.15
 dw1<-rnorm(n,0,0.05*sqrt(dt)) #0.05
@@ -56,6 +56,6 @@ lines(a[a<ah],x1,col=6,lty=2,lwd=3)
 axis(side=2, cex.axis=2)
 axis(side=1, cex.axis=2)
 mtext("x", side = 2, line = 3.5, cex=2.5)
-mtext("p(t)", side = 1, line = 2.8, cex=2.5)
+mtext(expression(paste(mu,"(t)")), side = 1, line = 2.8, cex=2.5)
 #mtext("(d)",side=3,adj=0.02,cex=2.5,line=-0.5,font=2,xpd=TRUE)
 dev.off()

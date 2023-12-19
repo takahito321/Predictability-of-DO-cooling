@@ -1,13 +1,8 @@
 library(Hmisc)
-library(misty)
-library(Kendall)
 library(nonlinearTseries) # FFTsurrogate
-library(smoother)
-library(RColorBrewer)
-cl<-brewer.pal(11,"RdBu")
 
 dt<-0.001
-T<-10
+T<-5 #10
 q<-100
 th<-0.2
 N<-T/dt
@@ -47,13 +42,6 @@ par(mai = c(0.3, 0.3, 0.1, 0.05))
 
 for(i in ii){  # for-loop of each GI
 
-dt<-0.001
-T<-10
-q<-100
-N<-T/dt
-t<-(1:N)*dt
-a<-seq(0.3,0.2,length=N)
-
 set.seed(i) #13
 s<-rep(0,N)
 y<-rep(0,N)
@@ -64,7 +52,8 @@ for(j in 1:(N-1)){
     y[j+1]<-y[j]+(-s[j]-y[j])*dt+dw2[j]
 }
 
-j1<-min(which(s>1.1))+100
+j1<-max(which(s>1.1))+100
+#j1<-min(which(s<0.52 & t>t[j1])) #+100
 j2<-min(which(s<0.3 & t>t[j1]))
 j3<-max(which(s>0.5 & t<t[j2]))
 
@@ -83,8 +72,8 @@ xl<-c(min(tex),max(tex)) # time interval to plot (positive)
 ns<-1000      # sample size for p values
 #smoothing<-"gaussian"
 smoothing<-"loess"
-bandwidth<-20 # 0-100% for smoothing 
-winsize<-30   # 0-100% (default 50%) for rolling statistics
+bandwidth<-30 # 0-100% for smoothing 
+winsize<-40   # 0-100% (default 50%) for rolling statistics
 #x<-x[round(0.2*length(x)):length(x)]     # remove first % (not used)
 #tx<-tx[round(0.2*length(tx)):length(tx)] # remove first % (not used)
 th<-0.1
@@ -99,64 +88,39 @@ if(smoothing=="loess")    xs <- predict(loess(x~tx, span=span, degree=1)) # line
 y<-x-xs                        # residuals
 v<-rep(NA,length(y))           # variance
 ac<-rep(NA,length(y))          # lag-1 autocorrelation
-ac2<-rep(NA,length(y))         # lag-2 autocorrelation
-ac3<-rep(NA,length(y))         # lag-3 autocorrelation
-#ac4<-rep(NA,length(y))        # lag-4 autocorrelation
-lam<-rep(NA,length(y))         # lag-1 lambda
-ACF<-matrix(NA,length(y),wd)   # lag-1 lambda
-dy<-y[1:n]-c(0,y[-n])          # dy(j)=y(j)-y(j-1). dy[1]=y[1]-0 (unnatural but unused), dy[2]=y[2]-y[1]
 ix<-wd:n                   
 for(j in ix){
     v[j]<-var(y[(j-wd+1):j])   # window length wd
     Z<-y[(j-wd+1):j]-mean(y[(j-wd+1):j])
     ac[j]<-sum(Z[-1]*Z[-wd])/sum(Z^2)
-    ac2[j]<-sum(Z[-c(1,2)]*Z[-c(wd-1,wd)])/sum(Z^2)
-    ac3[j]<-sum(Z[-c(1,2,3)]*Z[-c(wd-2,wd-1,wd)])/sum(Z^2)
-    #ac4[j]<-sum(Z[-c(1,2,3,4)]*Z[-c(wd-3,wd-2,wd-1,wd)])/sum(Z^2)
-    ACF[j,]<-acf(y[(j-wd+1):j],lag.max=wd,plot=FALSE)$acf
-    Y<-dy[(j-wd+2):j]-mean(dy[(j-wd+2):j])        # dy[2:wd]     (j=wd), dy[3:(wd+1)]
-    X<-y[(j-wd+1):(j-1)]-mean(y[(j-wd+1):(j-1)])  #  y[1:(wd-1)] (j=wd),  y[2:wd]
-    lam[j]<-sum(X*Y)/sum(X^2)                   
 }
 fit1<-lm(v[ix]~tx[ix])
 fit2<-lm(ac[ix]~tx[ix])
-fit3<-lm(lam[ix]~tx[ix])
 trend1<-as.numeric(fit1$coef[2])
 trend2<-as.numeric(fit2$coef[2])
-trend3<-as.numeric(fit3$coef[2])
 pred1<-predict(fit1)
 pred2<-predict(fit2)
-pred3<-predict(fit3)
 
 sg<-FFTsurrogate(y, n.samples = ns) # surrogate data [instance x time]
 sg<-sg-rowMeans(sg)                 # remove rowMeans
 vs<-matrix(NA,ns,length(y))         # variance
 acs<-matrix(NA,ns,length(y))        # lag-1 autocorrelation
-lams<-matrix(NA,ns,length(y))       # lag-1 lambda
-dys<-sg[,1:n]-cbind(matrix(0,ns,1),sg[,-n]) # dy(j)=y(j)-y(j-1)
 for(j in ix){ 
     vs[,j]<-apply(sg[,(j-wd+1):j],1,var)
     Z<-sg[,(j-wd+1):j]-rowMeans(sg[,(j-wd+1):j])
     acs[,j]<-rowSums(Z[,-1]*Z[,-wd])/rowSums(Z^2)
-    Y<-dys[,(j-wd+2):j]-rowMeans(dys[,(j-wd+2):j])        # dy(j)=y(j)-y(j-1)~y(j-1)
-    X<-sg[,(j-wd+1):(j-1)]-rowMeans(sg[,(j-wd+1):(j-1)])  
-    lams[,j]<-rowSums(X*Y)/rowSums(X^2)
 }
 vs<-vs[,ix]
 acs<-acs[,ix]
-lams<-lams[,ix]
 vs<-vs-rowMeans(vs)
 acs<-acs-rowMeans(acs)
-lams<-lams-rowMeans(lams)
 tm<-matrix(tx[ix],dim(vs)[1],dim(vs)[2],byrow=TRUE)
 tm<-tm-rowMeans(tm)
 trend1.surrogate<-rowSums(vs*tm)/rowSums(tm^2)
 trend2.surrogate<-rowSums(acs*tm)/rowSums(tm^2)
-trend3.surrogate<-rowSums(lams*tm)/rowSums(tm^2)
 p1<-length(trend1.surrogate[trend1.surrogate>trend1])/ns
 p2<-length(trend2.surrogate[trend2.surrogate>trend2])/ns
-p3<-length(trend3.surrogate[trend3.surrogate>trend3])/ns
-c(p1,p2,p3)
+c(p1,p2)
     
 
 ## plot ############################################################

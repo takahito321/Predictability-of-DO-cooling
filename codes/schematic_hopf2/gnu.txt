@@ -2,7 +2,7 @@ set ticslevel 0
 set view 109, 113
 #set view 60, 300
 set tics font ", 19"
-set xlabel "p" font ",21" offset 0,0,0
+set xlabel "{/Symbol m}" font ",21" offset 0,0,0
 set ylabel "y" font ",21" offset 0,-0.8,0
 set zlabel "x" font ",21" offset 0,0,0 
 set xrange [0.2:0.3]
