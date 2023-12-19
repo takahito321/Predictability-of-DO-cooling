@@ -15,7 +15,8 @@ The codes are written by Takahito Mitsui. Some parts are written following early
 - The basic elemnts in this code are the same as ews_data.R
 - make a directry/folder named 'ews_data_summary' at the same directry level of ews_data_summary.R
 - change the number 'k' (k=1, 2, ..., 6) to specify which proxy is analyzed.
-- run ews_data_summary.R. Output Figures are created in 'ews_data_summary'
+- run ews_data_summary.R. Output Figures 'result*.dat' are created in 'ews_data_summary'
+- Then generate Fig 4d (result_matrix.eps) by result.R in ews_data_summary
   
 ### R-Codes for Fig. 5 
 are included in several folders:
