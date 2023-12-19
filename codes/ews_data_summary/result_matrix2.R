@@ -51,16 +51,15 @@ for(k in 1:6){
 p[,1:12]<-p[,12:1]
 p[p==0]<--100
 
+ii<-c(2, 6,  8,  9, 16, 19, 20, 24) # NGRIP d18O
+
 cl<-c(brewer.pal(n = 9, name = "Blues")[2:6],brewer.pal(n = 9, name = "RdPu")[5:9])
-#cl<-c(brewer.pal(n = 9, name = "Blues")[2:6],brewer.pal(n = 9, name = "Oranges")[5:9])
-#cl<-c(brewer.pal(n = 9, name = "Greens")[2:6],brewer.pal(n = 9, name = "RdPu")[5:9])
-#cl<-rev(magma(100))
-ii<-c(2, 3, 4, 6, 8, 9, 10, 16, 19, 20, 24, 33) # NGRIP d18O
-#postscript(file="result_matrix.eps",encoding="WinAnsi.enc",horizontal=TRUE)
+
+postscript(file="result_matrix2.eps",encoding="WinAnsi.enc",horizontal=TRUE)
 par(mfrow=c(1,1))
 par(mar=c(0,0,0,0))
 par(oma=c(0,0,0,0))
-par(mai = c(0.4, 1.9, 0.1, 0))
+par(mai = c(0.4, 1.9, 0.5, 0))
 laby<-c(expression(paste("GISP2 Ca"^{"2+"}," AC")),
         expression(paste("GISP2 Ca"^{"2+"}," Var")),
         expression(paste("GRIP Ca"^{"2+"}," AC")),
@@ -76,23 +75,7 @@ laby<-c(expression(paste("GISP2 Ca"^{"2+"}," AC")),
 image.plot(1:length(ii),1:12,p[ii,],zlim=c(1.51,28.51),xlab="",ylab="",col=cl,xaxt="n",yaxt="n",legend.lab="", legend.width=1, legend.cex=2, axis.args=list(cex.axis=1.3))
 axis(1, at=1:length(ii), labels=GI2[ii], cex.axis=1.3) 
 axis(2, at=1:12, labels=laby, cex.axis=1.3, las = 1)
-rect(0.5, 6.5, 3.5, 10.5, density = 50, col = "gray", angle = -30, border = "transparent")
-rect(0.5, 4.5, 2.5, 6.5, density = 50, col = "gray", angle = -30, border = "transparent")
-rect(0.5, 0.5, 3.5, 4.5, density = 50, col = "gray", angle = -30, border = "transparent")
-text(2,2.5,"Unpublished",cex=1.5)
-#dev.off()
-
-# the number of robust EWS
-# sum(p[ii,]>15)  = 34
-# sum(p[ii,]>15)/(12*12-28) = 0.29 (probability)
-# sum(p[ii,]>=15) = 36
-# sum(p[ii,]>=15)/(12*12-28) = 0.3103448 (probability)
-
-#postscript(file="result_barplot.eps",encoding="WinAnsi.enc",height=2,width=12)
-par(mfrow=c(1,1))
-par(mar=c(0,0,0,0))
-par(oma=c(0,0,0,0))
-par(mai = c(0.4, 1.9, 0.1, 0.1))
-barplot(dur[ii]/1000,ylab="Duration (kyr)", cex.axis=1.5, cex.lab=1.5, col="orange")
-abline(h=1.5,lty=2,col=2,lwd=2)
-#dev.off()
+rect(0.5, 0.5, 1.5, 10.5, density = 50, col = "gray", angle = -30, border = "transparent")
+text(1,5.5,"Unpublished",cex=1.5,srt=90)
+title("(a) With rebound events",cex.main=1.4,col=1,xpd = NA,line = 1) 
+dev.off()
