@@ -27,7 +27,7 @@ plot(a[(1:N)%%100==0],x[(1:N)%%100==0],type="l",xlim=c(min(a),max(a)),col=4,ylab
 axis(side=2, cex.axis=2)
 axis(side=1, cex.axis=2)
 mtext("x", side = 2, line = 3.5, cex=2.5)
-mtext("p(t)", side = 1, line = 2.8, cex=2.5)
+mtext(expression(paste(mu,"(t)")), side = 1, line = 2.8, cex=2.5)
 lines(a1,x1,col=3,lwd=2.5)
 lines(a2,x2,col=3,lty=2,lwd=2.5)
 lines(a3,x3,col=3,lwd=2.5)
