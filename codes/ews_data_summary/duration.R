@@ -33,5 +33,5 @@ dur.o<-t2.o-t1.o
 
 ii<-c(2, 3, 4, 6, 8, 9, 10, 16, 19, 20, 24, 33) # NGRIP d18O
 
-dur[ii]
-dur.o[ii]
+dur[ii]   # duration after 2*sigma removing uncertainty ranges
+dur.o[ii] # duration original
