@@ -34,3 +34,7 @@ are included in several folders:
 - Step 1. In the code, set index 'i' to specify which DO is examined: i=2 for DO-25 or i=20 for DO-12 (those two are considered in the paper)  
 - Step 2. In the code, set index 'case' from 1 to 10 (this just splits 5000 experiments into ten 500 experiments allowing 'parallel' computations). Then run this R-code for each case.
 - Step 3. Finally go to directry ews_data_summary_further_test. Then run result.R to obtain the probability of observing robust precursor signals for variance: the shown numbers are probabilites of getting robust SPS for the variance (>=15 times over 30 parameter sets), lag-1AC (>=15), variance (>15) and lag-1 AC (>15), respectively.
+
+### ews_data_5yr.R for Figs S25-S28
+- ews_data_5yr.R generates Figs S25-S28 in the directory ews_data_5yr
+- change k to select a proxy and interstadials from NGRIP d18O and log Ca2+ 
