@@ -39,6 +39,12 @@ are included in several folders:
 ### Table S1
 - is generated from ews_data_summary/duration.R
 
+### ews_data_summary_rebound.R for Fig. S23
+- make a directry/folder named 'ews_data_summary_rebound' at the same directry level of ews_data_summary_rebound.R
+- change the number 'k' (k=1, 2, ..., 6) to specify which proxy is analyzed.
+- run ews_data_summary_rebound.R. Output Figures 'result*.dat' are created in 'ews_data_summary_rebound'
+- Then generate result_matrix_rebound.eps by result.R in ews_data_summary_rebound
+
 ### ews_data_5yr.R for Figs S25-S28
 - ews_data_5yr.R generates Figs S25-S28 in the directory ews_data_5yr
 - change k to select a proxy and interstadials from NGRIP d18O and log Ca2+ 
