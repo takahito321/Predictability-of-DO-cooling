@@ -11,7 +11,7 @@ The codes are written by Takahito Mitsui. Some parts are written following early
 5. choose parameters for calculating CSD indicators (variance, lag.1 autocorrelation, lambda, etc): ns (the number of surrogate data), smoothing (gaussian or loess), bandwidth (0-100%), winsize (0-100%)     
 6. run ews_data.R. Output Figures are created in 'ews_data'
 
-### ews_data_summary.R  for Fig 4
+### ews_data_summary.R  for Fig 4 (and Figs S11-S22)
 - The basic elemnts in this code are the same as ews_data.R
 - make a directry/folder named 'ews_data_summary' at the same directry level of ews_data_summary.R
 - change the number 'k' (k=1, 2, ..., 6) to specify which proxy is analyzed.
