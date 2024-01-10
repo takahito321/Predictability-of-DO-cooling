@@ -19,11 +19,11 @@ The codes are written by Takahito Mitsui. Some parts are written following early
 - Then generate Fig 4d (result_matrix.eps) by result.R in ews_data_summary
   
 ### R-Codes for Fig. 5 
-are included in several folders:
-- schematic_stommel2 (Stommel model Fig. 5a)
-- schematic_fhn2  (Stochastic slow-fast oscillations in Figs 5b & 5b)
-- schematic_hopf2 (Hopf bifurcation mechanism in Figs 5d & 5e)
-- schematic_mmo2  (Mixed-mode oscillation mechanism in Figs 5f & 5g)
+are included in several folders as follows:
+- schematic_stommel2/schematic_stommel.R (Stommel model Fig. 5a)
+- schematic_fhn2/schematic_fhn.R  (Stochastic slow-fast oscillations in Figs 5b & 5b)
+- schematic_hopf2/schematic_hopf.R (Hopf bifurcation mechanism in Figs 5d & 5e)
+- schematic_mmo2/schematic_mmo.R  (Mixed-mode oscillation mechanism in Figs 5f & 5g)
 
 ### R-Code for Fig. 6 
 - ews_stommel_rate.R in folder schematic_stommel2 
@@ -45,6 +45,12 @@ are included in several folders:
 - run ews_data_summary_rebound.R. Output Figures 'result*.dat' are created in 'ews_data_summary_rebound'
 - Then generate result_matrix_rebound.eps by result.R in ews_data_summary_rebound
 
-### ews_data_5yr.R for Figs S25-S28
+### ews_data_5yr.R for Figs S24-S28
 - ews_data_5yr.R generates Figs S25-S28 in the directory ews_data_5yr
-- change k to select a proxy and interstadials from NGRIP d18O and log Ca2+ 
+- change k to select a proxy and interstadials from NGRIP d18O and log Ca2+
+
+### R-codes for Figs S29-S31
+are included in several folders as follows:
+- schematic_fhn2/ews_fhn.R  (Fig. S29)
+- schematic_hopf2/ews_hopf.R (Fig. S30)
+- schematic_mmo2/ews_mmo.R  (Fig. S31)
